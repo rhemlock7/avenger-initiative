@@ -5,11 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avengers Workout Tracker</title>
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <h1>Avenger's Workout Tracker</h1>
+
+    <!-- Navigation -->
+    <header id="header" class="flex justify-between align-center px-12 py-5 bg-red-700 text-white">
+        <h2>Logo</h2>
+        <a href="#">View Workouts</a>
+    </header>
+
+    <main class="mx-4">
+        <h1 class="text-center mt-3">Hero Selector</h1>
+        <!-- Main Content Section -->
+        <section class="row justify-between my-4">
+            <div class="col-5 h-64 bg-red-300">
+                <div id="input-view" class="row">
+                    <h2>Select Your Hero</h2>
+
+                    <!-- Hero Select Form -->
+                    <form>
+                        <select name="" id="">
+                            <option value="">Select Your Hero</option>
+                            <option value="">Captain America</option>
+                            <option value="">Hulk</option>
+                        </select>
+                    </form>
+                </div>
+
+                <div class="row">
+                    <h2>Hero Details Go Here</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nostrum eos, eveniet impedit iure fugiat officiis accusantium et, quis amet ad vero voluptatum consequatur expedita nobis dicta, tempore corporis quia.</p>
+                </div>
+            </div>
+
+            <div class="col-5 h-64 bg-blue-300">
+                <div id="daily-view" class="">
+                    <h2>This is the daily routine box</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere, libero omnis. Dolore fuga adipisci quasi qui culpa ipsam illum assumenda libero. Dignissimos, et itaque. Hic odit dicta repudiandae corrupti libero.</p>
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- Weekly Routine Container -->
+        <section id="weekly-view">
+            <div class="col-12 text-center bg-red-300 h-80 p-3">
+                <h2>Weekly View</h2>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bootstrap Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <!-- JavaScript -->
     <script src="./assets/javascript/script.js"></script>
