@@ -7,7 +7,7 @@ fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${hulk}&apikey=8
 fetch('apikey=cc4333db4938d18f524710563c07f5b9843cfbc7')
 .then(res => res.json())
 .then(data => { console.log(workoutData) })
-
+var workoutApi = 'https://api.api-ninjas.com/v1/triviaheaders={X-Api-Key'
 // #get both API's fetching data
     //*Marvel currently complete
     //TODO: Workout API
