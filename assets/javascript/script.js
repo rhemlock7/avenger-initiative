@@ -161,9 +161,9 @@ heroselectformEl = document.querySelector("#hero-select-form")
     function hulkPallet () {
         document.body.setAttribute("style", "background-color: #0e103f; color: white;");
     }
-    
-    
 
+    
+    
 
         //     //loops through the data for the length of list in the data in incriments of 8 because the data shows every 3 hours
         //     for (let index = 0; index < data.list.length; index = index + 8) {
