@@ -74,3 +74,12 @@ a {
     justify-content: space-evenly;
 
 }
+#next{
+   position: relative;
+   left:800px;
+   background-color:  #ec2127;
+   color: white;
+   padding: 10px 20px 10px 20px;
+   
+   font-size: 20px;
+}
