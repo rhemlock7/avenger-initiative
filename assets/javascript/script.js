@@ -36,8 +36,8 @@ fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${hulk}&apikey=8
 
 
 // fetch('apikey=cc4333db4938d18f524710563c07f5b9843cfbc7')
-    // .then(res => res.json())
-    // .then(data => { console.log(workoutData) })
+// .then(res => res.json())
+// .then(data => { console.log(workoutData) })
 
 // #get both API's fetching data
 //*Marvel currently complete
@@ -49,16 +49,47 @@ fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${hulk}&apikey=8
 
 function createWeeklyView() {
     var weeklyWorkoutContainer = document.createElement('div');
+    weeklyWorkoutContainer.setAttribute("id", "workout-weekly-container")
+    var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-    for (i=0; i < 7; i++) {
+    for (i = 0; i < 7; i++) {
+
         // Create HTML Elements
         var dayOfWeekContainer = document.createElement('div');
         var dayOfWeekTitle = document.createElement('h4');
         var dayOfWeekDetails = document.createElement('p');
 
+        // Set styling for daysOfWeek
+
+        dayOfWeekContainer.setAttribute("style", "background-color:black; color:white; height:150px; padding:10px; margin-top:15px; text-align:left; width:13.5%")
+        dayOfWeekTitle.setAttribute("style", "font-size: 1.5em;")
+        dayOfWeekDetails.setAttribute("style", "margin-top:20px;")
+
         // Set textContent for each element
-        dayOfWeekTitle.textContent = dayjs().format("");
+        dayOfWeekTitle.textContent = daysOfWeek[i];
+        dayOfWeekDetails.textContent = "Details will go here"
+
+        // Append Text to DayOfWeek div
+        dayOfWeekContainer.append(dayOfWeekTitle);
+        dayOfWeekContainer.append(dayOfWeekDetails);
+
+        // Append daysOfWeek containers to weeklyView container
+        weeklyWorkoutContainer.append(dayOfWeekContainer)
+        weeklyViewContainer.append(weeklyWorkoutContainer)
     }
 
     //weeklyViewContainer
 }
+
+heroselectformEl = document.querySelector("#hero-select-form")
+heroselectformEl.addEventListener('change', function () {
+    let options = document.querySelector("#hero-select-dropdown")
+    console.log(options)
+    if (options.value === "captain") {
+        console.log("I am america")
+    } else if (options.value === "hulk") {
+        console.log("I am hulk")
+    }
+})
+
+createWeeklyView();
