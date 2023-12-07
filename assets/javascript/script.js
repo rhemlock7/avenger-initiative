@@ -20,10 +20,11 @@ fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${hulk}&apikey=8
 
         // Set HTML elements' text content to be hero data
         heroImage.setAttribute("src", data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension);
-        heroImage.setAttribute("style", "width:50%; border-radius:24px; margin:15px 0")
+        heroImage.setAttribute("style", "max-width:400px; width:50%; border-radius:24px; margin:15px 0")
         heroNameH3.textContent = data.data.results[0].name;
         heroNameH3.setAttribute("style", "font-size:3em;")
         heroDescription.textContent = data.data.results[0].description;
+        heroDescription.setAttribute("style", "width:75%;")
 
         heroDetailDiv.append(heroImage);
         heroDetailDiv.append(heroNameH3);
@@ -43,10 +44,3 @@ fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${hulk}&apikey=8
 // #Add event listening on form
 //TODO: Need prevent default since it's a form
 //TODO: Function that fetches the API's by listening to if the value has changed within the selector?
-
-// #
-
-// Hero Details to display on screen:
-// 1. Hero Image
-// 2. Hero name
-// 3. Hero Description
