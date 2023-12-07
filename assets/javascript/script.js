@@ -1,6 +1,7 @@
 // Store HTML elements in variables
 var heroDetailDiv = document.querySelector('#hero-details')
 
+
 var hulk = 'Iron Man'
 var captain = 'Captain America'
 
@@ -45,23 +46,26 @@ fetch('https://api.api-ninjas.com/v1/exercises?muscle=biceps', {
 .then(res => res.json())
 .then(data => { 
     console.log(data) })
-    
-// #get both API's fetching data
-//*Marvel currently complete
-//TODO: Workout API
-
-// #Add event listening on form
-//TODO: Need prevent default since it's a form
-//TODO: Function that fetches the API's by listening to if the value has changed within the selector?
 
     heroselectformEl = document.querySelector("#hero-select-form")
     heroselectformEl.addEventListener('change', function() {
         let options = document.querySelector("#hero-select-dropdown")
-        console.log(options)
+            console.log(options)
         if (options.value === "captain") {
+
             console.log("I am america")
         } else if (options.value === "hulk") {
             console.log("I am hulk")
         } 
     })
+    
+    //Changing color pallet for when Captain America is selected
+    function captainAmericaPallet () {
+        document.body.setAttribute("style", "background-color: #0e103f; color: white;");
+    }
+
+    function hulkPallet () {
+        document.body.setAttribute("style", "background-color: #0e103f; color: white;");
+    }
+    
     
