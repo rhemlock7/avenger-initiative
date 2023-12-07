@@ -52,8 +52,6 @@ fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${hulk}&apikey=8
             console.log("I am america")
         } else if (options.value === "hulk") {
             console.log("I am hulk")
-        } else {
-  
-        }
+        } 
     })
     
