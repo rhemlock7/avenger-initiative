@@ -7,21 +7,16 @@
     //TODO: Function that fetches the API's by listening to if the value has changed within the selector?
 
 
-
-    // function HeroSeleted(e) {
-    //     e.preventDefault()
-    //     console.log(HeroSeleted)
-    // }
     heroselectformEl = document.querySelector("#hero-select-form")
-    console.log(heroselectformEl)
-
-    heroselectformEl.addEventListener('change', function(event) {
+    heroselectformEl.addEventListener('change', function() {
         let options = document.querySelector("#hero-select-dropdown")
-        if (options.children[1].innerHTML === "Captain America") {
+        console.log(options)
+        if (options.value === "captain") {
             console.log("I am america")
-
-        } else if (options.children[2].innerHTML === "Hulk") {
+        } else if (options.value === "hulk") {
             console.log("I am hulk")
+        } else {
+  
         }
     })
     
