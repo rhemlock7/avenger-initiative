@@ -32,10 +32,20 @@ fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${hulk}&apikey=8
     })
 
 
-// fetch('apikey=cc4333db4938d18f524710563c07f5b9843cfbc7')
-// .then(res => res.json())
-// .then(data => { console.log(workoutData) })
 
+
+
+// https://api.api-ninjas.com/v1/exercises?muscle=
+// tFQ/n5S4oNe5c3vERyx93Q==960u5EA6MmusTREM
+
+fetch('https://api.api-ninjas.com/v1/exercises?muscle=biceps', {
+    headers: {
+    "X-Api-Key": "tFQ/n5S4oNe5c3vERyx93Q==960u5EA6MmusTREM"
+    }})
+.then(res => res.json())
+.then(data => { 
+    console.log(data) })
+    
 // #get both API's fetching data
 //*Marvel currently complete
 //TODO: Workout API
