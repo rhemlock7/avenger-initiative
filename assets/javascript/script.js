@@ -1,8 +1,10 @@
 // Store HTML elements in variables
-var heroDetailDiv = document.querySelector('#hero-details')
+var heroDetailDiv = document.querySelector('#hero-details');
+var weeklyViewContainer = document.querySelector('#weekly-container');
 
-var hulk = 'Iron Man'
-var captain = 'Captain America'
+var ironMan = 'Iron Man';
+var hulk = 'Hulk';
+var captain = 'Captain America';
 
 fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${hulk}&apikey=851e0da0c6b577d3681246bac28477e8`)
     .then(res => res.json())
@@ -34,8 +36,8 @@ fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${hulk}&apikey=8
 
 
 // fetch('apikey=cc4333db4938d18f524710563c07f5b9843cfbc7')
-// .then(res => res.json())
-// .then(data => { console.log(workoutData) })
+    // .then(res => res.json())
+    // .then(data => { console.log(workoutData) })
 
 // #get both API's fetching data
 //*Marvel currently complete
@@ -44,3 +46,19 @@ fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${hulk}&apikey=8
 // #Add event listening on form
 //TODO: Need prevent default since it's a form
 //TODO: Function that fetches the API's by listening to if the value has changed within the selector?
+
+function createWeeklyView() {
+    var weeklyWorkoutContainer = document.createElement('div');
+
+    for (i=0; i < 7; i++) {
+        // Create HTML Elements
+        var dayOfWeekContainer = document.createElement('div');
+        var dayOfWeekTitle = document.createElement('h4');
+        var dayOfWeekDetails = document.createElement('p');
+
+        // Set textContent for each element
+        dayOfWeekTitle.textContent = dayjs().format("");
+    }
+
+    //weeklyViewContainer
+}
