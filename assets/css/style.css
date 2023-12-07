@@ -68,3 +68,9 @@ a {
     padding: 0;
     margin: 0;
 }
+
+#workout-weekly-container {
+    display: flex;
+    justify-content: space-evenly;
+
+}
