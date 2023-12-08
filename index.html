@@ -48,12 +48,12 @@
                     <form id="hero-select-form">
                         <select class="selectorStyle" name="" id="hero-select-dropdown">
                             <option value="">Select Your Hero</option>
-                            <option value="Captain America">Captain America</option>
-                            <option value="Hulk">Hulk</option>
-                            <option value="Iron Man">Iron Man</option>
-                            <option value="Thor">Thor</option>
-                            <option value="Black Widow">Black Widow</option>
-                            <option value="Black Panther">Black Panther</option>
+                            <option data-difficulty="intermediate" value="Captain America">Captain America</option>
+                            <option data-difficulty="expert" value="Hulk">Hulk</option>
+                            <option data-difficulty="beginner" value="Iron Man">Iron Man</option>
+                            <option data-difficulty="expert" value="Thor">Thor</option>
+                            <option data-difficulty="beginner" value="Black Widow">Black Widow</option>
+                            <option data-difficulty="intermediate" value="Black Panther">Black Panther</option>
                         </select>
                     </form>
                 </div>
@@ -66,18 +66,18 @@
             <div id="daily-routine-container" class=" border-solid border-4 border-black w-full rounded p-3">
                 <div id="daily-view" class="">
                     <h2>Daily View Container</h2>
-                    <h2>Select Difficulty</h2>
+                    <!-- <h2>Select Difficulty</h2> -->
 
                     <!-- Hero Select Form -->
-                    <form id="level">
+                    <!-- <form id="level">
                         <select class="selectorStyle" name="" id="levels-dropdown">
                             <option value="">Select Difficulty</option>
                             <option value="beginner&">beginner</option>
                             <option value="intermediate&">intermediate</option>
                             <option value="expert&">expert</option>
                         </select>
-                    </form>
-                    <h2>Select Workout</h2>
+                    </form> -->
+                    <!-- <h2>Select Workout</h2> -->
 
                     <!-- Hero Select Form -->
                     <form id="workouts">
@@ -114,6 +114,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
 
     <!-- JavaScript -->
     <script src="./assets/javascript/script.js"></script>
