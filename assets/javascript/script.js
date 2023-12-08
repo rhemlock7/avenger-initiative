@@ -7,16 +7,15 @@ var heroDetailDiv = document.querySelector('#hero-details');
 var weeklyViewContainer = document.querySelector('#weekly-container');
 var workoutIndex = 0;
 var workoutData;
-var difficulty = [];
+var heroDifficulty;
 
 // Event Listener on hero dropdown
 heroselectformEl = $("#hero-select-form")
 heroselectformEl.on('change', function (event) {
 
     let hero = event.target.value;
-
-    var capacityValue = $(this).find(":selected").data("difficulty") 
-    console.log(capacityValue)
+    heroDifficulty = $(this).find(":selected").data("difficulty") 
+    console.log(heroDifficulty)
     // console.log(hero);
     // console.log(event.target.getAttribute("data-difficulty"))
     // console.log(hero)
@@ -43,7 +42,7 @@ function getHeroInfo(input) {
         fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${localHero}&apikey=851e0da0c6b577d3681246bac28477e8`)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             // console.log(data.data.results[0])
             // console.log("Name: " + data.data.results[0].name)
             // console.log("Image Link: " + data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension)
