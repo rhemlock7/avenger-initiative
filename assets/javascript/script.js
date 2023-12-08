@@ -10,12 +10,17 @@ var workoutData;
 var difficulty = [];
 
 // Event Listener on hero dropdown
-heroselectformEl = document.querySelector("#hero-select-form")
-heroselectformEl.addEventListener('change', function (event) {
+heroselectformEl = $("#hero-select-form")
+heroselectformEl.on('change', function (event) {
 
     let hero = event.target.value;
-    console.log(hero);
 
+    var capacityValue = $(this).find(":selected").data("difficulty") 
+    console.log(capacityValue)
+    // console.log(hero);
+    // console.log(event.target.getAttribute("data-difficulty"))
+    // console.log(hero)
+    // console.log(event.target.data)
     localStorage.setItem("hero", hero);
 
     getHeroInfo(hero)
@@ -39,10 +44,10 @@ function getHeroInfo(input) {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            console.log(data.data.results[0])
-            console.log("Name: " + data.data.results[0].name)
-            console.log("Image Link: " + data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension)
-            console.log("Description: " + data.data.results[0].description)
+            // console.log(data.data.results[0])
+            // console.log("Name: " + data.data.results[0].name)
+            // console.log("Image Link: " + data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension)
+            // console.log("Description: " + data.data.results[0].description)
 
             function displayHero() {
                 // Create HTML elements
@@ -52,6 +57,7 @@ function getHeroInfo(input) {
 
                 // Set HTML elements' text content to be hero data
                 heroImage.setAttribute("src", data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension);
+                heroImage.setAttribute("alt", data.data.results[0].name);
                 heroImage.setAttribute("style", "max-width:400px; width:50%; border-radius:24px; margin:15px 0")
                 heroNameH3.textContent = data.data.results[0].name;
                 heroNameH3.setAttribute("style", "font-size:3em;")
