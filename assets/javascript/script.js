@@ -5,8 +5,9 @@ var hulk = 'Iron Man'
 var captain = 'Captain America'
 var heroDetailDiv = document.querySelector('#hero-details');
 var weeklyViewContainer = document.querySelector('#weekly-container');
-
-
+var workoutIndex = 0;
+var workoutData;
+var difficulty = [];
 
 // Event Listener on hero dropdown
 heroselectformEl = document.querySelector("#hero-select-form")
@@ -75,81 +76,119 @@ function getHeroInfo(input) {
 
             createWeeklyView(localHero)
         })
+}
+}
+
+
+//MUSTAPHA: fetches the workout api and responds with a JSON 
+workoutsEl = document.querySelector("#workouts")
+workoutsEl.addEventListener('change', function (event) {
+
+    let muscle = event.target.value;
+    // let difficulty = 'difficulty='+ "expert&";
+    console.log(muscle);
+
+
+    fetch(`https://api.api-ninjas.com/v1/exercises?${difficulty}muscle=${muscle}`, {
+        headers: {
+            "X-Api-Key": "tFQ/n5S4oNe5c3vERyx93Q==960u5EA6MmusTREM"
+        }
+    })
+        .then(res => res.json())
+        .then(data => {
+
+            console.log(data)
+            workoutData = data;
+            showsWorkouts();
+
+        })
+
+})
+function nextBtnFunction() {
+    if (workoutIndex < 6) {
+        prevBtn.classList.remove('diable-btn')
+        workoutIndex++;
+        showsWorkouts(workoutIndex);
+        console.log("you clicked me ")
+        prevBtn.classList.remove('hide')
+        console.log(workoutIndex)
+
+        if (workoutIndex === 6) {
+            nextBtn.classList.add('diable-btn')
+        }
     }
 
-    
+}
+function prevBtnFunction() {
+    if (workoutIndex > 0) {
+        nextBtn.classList.remove('diable-btn')
+        workoutIndex--;
+        showsWorkouts(workoutIndex);
+        console.log("you clicked prev ")
+        prevBtn.classList.remove('diable-btn')
+        console.log(workoutIndex)
+
+        if (workoutIndex === 0) {
+            prevBtn.classList.add('diable-btn')
+        }
+    }
+
+
+
+}
+
+function showsWorkouts() {
+
+    //removes hide from next buttom
+    nextBtn.classList.remove('hide')
+    //MUSTAPHA:removes all children before display new children
+    if (workoutDetailsDiv.hasChildNodes()) {
+        for (let i = workoutDetailsDiv.children.length - 1; i >= 0; i--) {
+            workoutDetailsDiv.removeChild(workoutDetailsDiv.children[i]);
+        }
+
+    }
+    //MUSTAPHA: created function for workouts to collect data and display in Daily View container
+    var workoutName = workoutData[workoutIndex].name;
+    var category = workoutData[workoutIndex].type;
+    var muscle = workoutData[workoutIndex].muscle;
+    var equipment = workoutData[workoutIndex].equipment;
+    var instr = workoutData[workoutIndex].instructions;
+    console.log(workoutName);
+    console.log(category);
+    console.log(muscle);
+    console.log(equipment);
+    console.log(instr);
+
+    //MUSTAPHA: creates elements for retrieved data
+    var workoutNameEl = document.createElement('li')
+    var categoryEl = document.createElement('li')
+    var muscleEl = document.createElement('li')
+    var equipmentEl = document.createElement('li')
+    var instrEl = document.createElement('li')
+    instrEl.setAttribute("style", "font-size: 10px")
+    workoutNameEl.textContent = "Workout - " + workoutName;
+    categoryEl.textContent = "Type - " + category;
+    muscleEl.textContent = "Muscle - " + muscle;
+    equipmentEl.textContent = "Equipment - " + equipment;
+    instrEl.textContent = instr;
+    //MUSTAPHA:appends the created elements to the html
+    workoutDetailsDiv.append(workoutNameEl)
+    workoutDetailsDiv.append(categoryEl)
+    workoutDetailsDiv.append(muscleEl)
+    workoutDetailsDiv.append(equipmentEl)
+    workoutDetailsDiv.append(instrEl)
+    console.log(workoutDetailsDiv);
 }
 
 
 
+//creates variables for event listener
+var nextBtn = document.querySelector('#next');
+var prevBtn = document.querySelector('#prev');
+nextBtn.addEventListener("click", nextBtnFunction);
+prevBtn.addEventListener("click", prevBtnFunction)
 
-// TODO --------------------------------------------------------------------------------
-// Mustapha's workout data fetch being displayed in Daily View Container
-
-// muscle = "glutes"
-
-// fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}`, {
-//     headers: {
-//         "X-Api-Key": "tFQ/n5S4oNe5c3vERyx93Q==960u5EA6MmusTREM"
-//     }
-// })
-//     .then(res => res.json())
-//     .then(data => {
-
-//         console.log(data)
-
-
-
-//         var workoutName = data[0].name;
-//         var category = data[0].type;
-//         var muscle = data[0].muscle;
-//         var equipment = data[0].equipment;
-//         var instr = data[0].instructions;
-
-//         console.log(workoutName);
-//         console.log(category);
-//         console.log(muscle);
-//         console.log(equipment);
-//         console.log(instr);
-
-//         var workoutNameEl = document.createElement('li')
-//         var categoryEl = document.createElement('li')
-//         var muscleEl = document.createElement('li')
-//         var equipmentEl = document.createElement('li')
-//         var instrEl = document.createElement('li')
-
-//         workoutNameEl.textContent = workoutName;
-//         categoryEl.textContent = category;
-//         muscleEl.textContent = muscle;
-//         equipmentEl.textContent = equipment;
-//         instrEl.textContent = instr;
-
-//         workoutDetailsDiv.append(workoutNameEl)
-//         workoutDetailsDiv.append(categoryEl)
-//         workoutDetailsDiv.append(muscleEl)
-//         workoutDetailsDiv.append(equipmentEl)
-//         workoutDetailsDiv.append(instrEl)
-//         console.log(workoutDetailsDiv);
-//     })
-// TODO --------------------------------------------------------------------------------
-
-//Event Listener for filtering workouts -- Working
-workoutSelectorEl = document.querySelector("#workouts")
-workoutSelectorEl.addEventListener('change', function () {
-    let choice = document.querySelector("#workout-dropdown")
-    console.log(choice)
-    if (choice.value === "chest") {
-        console.log("chest")
-    } else if (options.value === "biceps") {
-        console.log("biceps")
-
-    } else if (options.value === "glutes") {
-        console.log("glutes")
-
-    } else if (options.value === "abdominals") {
-        console.log(category)
-    }
-})
 
 
 
