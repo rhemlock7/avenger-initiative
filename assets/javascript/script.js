@@ -21,16 +21,16 @@ heroselectformEl.on('change', function (event) {
     // console.log(hero)
     // console.log(event.target.data)
     localStorage.setItem("hero", hero);
+    localStorage.setItem("heroDifficulty", heroDifficulty)
 
     getHeroInfo(hero)
-
-    heroColorPallet (hero)
 
 })
 
 // Function that takes the hero data and displays it on screen
 function getHeroInfo(input) {
     let storedHero = localStorage.getItem("hero");
+    heroDifficulty = localStorage.getItem("heroDifficulty");
 
     let localHero;
 
@@ -39,6 +39,8 @@ function getHeroInfo(input) {
     } else {
         localHero = storedHero;
     }
+
+    heroColorPallet(localHero)
 
     if (storedHero != null) {
         fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${localHero}&apikey=851e0da0c6b577d3681246bac28477e8`)
@@ -81,6 +83,7 @@ function getHeroInfo(input) {
                 displayHero();
             }
 
+            //Change localHero to be heroDifficulty
             createWeeklyView(localHero)
         })
 }
@@ -95,8 +98,9 @@ workoutsEl.addEventListener('change', function (event) {
     // let difficulty = 'difficulty='+ "expert&";
     console.log(muscle);
 
+    //${heroDifficulty}
 
-    fetch(`https://api.api-ninjas.com/v1/exercises?${heroDifficulty}muscle=${muscle}`, {
+    fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}`, {
         headers: {
             "X-Api-Key": "tFQ/n5S4oNe5c3vERyx93Q==960u5EA6MmusTREM"
         }
@@ -283,3 +287,4 @@ function createWeeklyView(heroValue) {
 
 // Calls function immediately to get hero from local storage
 getHeroInfo()
+console.log(heroDifficulty)
