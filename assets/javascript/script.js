@@ -96,7 +96,7 @@ workoutsEl.addEventListener('change', function (event) {
     console.log(muscle);
 
 
-    fetch(`https://api.api-ninjas.com/v1/exercises?${difficulty}muscle=${muscle}`, {
+    fetch(`https://api.api-ninjas.com/v1/exercises?${heroDifficulty}muscle=${muscle}`, {
         headers: {
             "X-Api-Key": "tFQ/n5S4oNe5c3vERyx93Q==960u5EA6MmusTREM"
         }
