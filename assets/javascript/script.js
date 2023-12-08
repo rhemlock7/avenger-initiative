@@ -206,33 +206,34 @@ heroselectformEl = document.querySelector("#hero-select-form")
     //Tyler Section Changing color pallet for when hero is selected. Being called within the event listener on the form id.
     function heroColorPallet (hero) {
         if (hero === "Captain America") {
-            document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #0e103f 3%, white 50%, #aa1428 100%)')
+            document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(100deg, #0e103f 3%, white 50%, #aa1428 100%)')
             document.querySelector("h1").setAttribute('style', 'color: black')
             document.body.setAttribute("style", "background-color: #0e103f; color: white");
             document.querySelector("#colorPallet").setAttribute("style", "background-color: #aa1428; border-color: #aa1428")
             document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #aa1428")
-            document.querySelector("#weekly-view-section").setAttribute("style", "background-color: white; border-color: white")
+            document.querySelector("#weekly-container").setAttribute("style", "background-color: #aa1428; border-color: white")
             document.querySelector("#prev").setAttribute("style", "background-color: white; color: #aa1428;");
             document.querySelector("#next").setAttribute("style", "background-color: white; color: #aa1428;");
         } else if (hero === "Hulk") {
             document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #28A36E 3%, white 50%, #533668 100%)')
             document.querySelector("h1").setAttribute('style', 'color: black')
-            document.body.setAttribute("style", "background-color: #533668; color: #533668;");
+            document.body.setAttribute("style", "background-color: #533668; color: white;");
             document.querySelector("#colorPallet").setAttribute("style", "background-color: #28A36E")
             document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #28A36E")
-            document.querySelector("#weekly-view-section").setAttribute("style", "background-color: #28A36E")
+            document.querySelector("#weekly-container").setAttribute("style", "background-color: #28A36E")
             document.querySelector("#prev").setAttribute("style", "background-color: #533668; color: #28A36E;");
             document.querySelector("#next").setAttribute("style", "background-color: #533668; color: #28A36E;");
         } else if (hero === "Black Widow") {
-            document.body.setAttribute("style", "background-color: #533668; color: #533668;");
-            document.querySelector("#colorPallet").setAttribute("style", "background-color: #28A36E")
-            document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #28A36E")
-            document.querySelector("#weekly-view-section").setAttribute("style", "background-color: #28A36E")
+            document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #7A1F1E 3%, #F7CBB2 50%, #645957 100%)')
+            document.querySelector("h1").setAttribute('style', 'color: black')
+            document.body.setAttribute("style", "background-color: #645957;");
+            document.querySelector("#colorPallet").setAttribute("style", "background-color: #F7CBB2; color: black")
+            document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #F7CBB2")
+            document.querySelector("#weekly-container").setAttribute("style", "background-color: #F7CBB2")
+            document.querySelector("#prev").setAttribute("style", "background-color: #645957; color: #F7CBB2;");
+            document.querySelector("#next").setAttribute("style", "background-color: #645957; color: #F7CBB2;");
         } 
     }
-    // #28A36E #533668
-//                    id="prev"
-//                    id="next"
 
 function createWeeklyView(heroValue) {
     var weeklyWorkoutContainer = document.createElement('div');
