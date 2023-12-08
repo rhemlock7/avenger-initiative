@@ -10,14 +10,32 @@ var workoutData;
 var difficulty = [];
 
 // Event Listener on hero dropdown
-
 heroselectformEl = document.querySelector("#hero-select-form")
 heroselectformEl.addEventListener('change', function (event) {
 
     let hero = event.target.value;
     console.log(hero);
 
-    fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${hero}&apikey=851e0da0c6b577d3681246bac28477e8`)
+    localStorage.setItem("hero", hero);
+
+    getHeroInfo(hero)
+
+})
+
+// Function that takes the hero data and displays it on screen
+function getHeroInfo(input) {
+    let storedHero = localStorage.getItem("hero");
+
+    let localHero;
+
+    if (input) {
+        localHero = input;
+    } else {
+        localHero = storedHero;
+    }
+
+    if (storedHero != null) {
+        fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${localHero}&apikey=851e0da0c6b577d3681246bac28477e8`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -56,9 +74,11 @@ heroselectformEl.addEventListener('change', function (event) {
                 displayHero();
             }
 
-            createWeeklyView(hero)
+            createWeeklyView(localHero)
         })
-})
+}
+}
+
 
 //MUSTAPHA: fetches the workout api and responds with a JSON 
 workoutsEl = document.querySelector("#workouts")
@@ -212,3 +232,6 @@ function createWeeklyView(heroValue) {
 
     //weeklyViewContainer
 }
+
+// Calls function immediately to get hero from local storage
+getHeroInfo()
