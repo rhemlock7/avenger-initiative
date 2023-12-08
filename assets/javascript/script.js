@@ -94,9 +94,9 @@ workoutsEl.addEventListener('change', function (event) {
     let muscle = event.target.value;
     // let difficulty = 'difficulty='+ "expert&";
     console.log(muscle);
+        
 
-
-    fetch(`https://api.api-ninjas.com/v1/exercises?${heroDifficulty}muscle=${muscle}`, {
+    fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}`, {
         headers: {
             "X-Api-Key": "tFQ/n5S4oNe5c3vERyx93Q==960u5EA6MmusTREM"
         }
@@ -243,6 +243,7 @@ heroselectformEl = document.querySelector("#hero-select-form")
 function createWeeklyView(heroValue) {
     var weeklyWorkoutContainer = document.createElement('div');
     weeklyWorkoutContainer.setAttribute("id", "workout-weekly-container")
+    weeklyWorkoutContainer.classList.add("grid", "row")
     var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
     if (weeklyViewContainer.hasChildNodes()) {
