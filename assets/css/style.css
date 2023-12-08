@@ -60,3 +60,22 @@ a {
     justify-content: space-evenly;
 
 }
+#next,#prev{
+    padding: 15px 10px;
+    border-radius: 6px;
+    background: #aa1f29 ;
+    color: white;
+    border:0;
+    outline: none;
+    cursor: pointer;
+    width: 100px;;
+}
+
+.diable-btn{
+  cursor: none;
+  opacity: .5;
+}
+
+.hide {
+    display: none !important;
+}
