@@ -8,6 +8,7 @@ var weeklyViewContainer = document.querySelector('#weekly-container');
 var workoutIndex = 0;
 var workoutData;
 var difficulty = [];
+let localHero;
 
 // Event Listener on hero dropdown
 heroselectformEl = document.querySelector("#hero-select-form")
@@ -26,7 +27,7 @@ heroselectformEl.addEventListener('change', function (event) {
 function getHeroInfo(input) {
     let storedHero = localStorage.getItem("hero");
 
-    let localHero;
+    
 
     if (input) {
         localHero = input;
@@ -84,12 +85,20 @@ function getHeroInfo(input) {
 workoutsEl = document.querySelector("#workouts")
 workoutsEl.addEventListener('change', function (event) {
 
+    let difficulty = 'difficulty='+ "expert&";
+    console.log(localHero)
+    if (localHero === "Thor") {
+        
+        
+        console
+          
+    }
+
     let muscle = event.target.value;
-    // let difficulty = 'difficulty='+ "expert&";
     console.log(muscle);
 
 
-    fetch(`https://api.api-ninjas.com/v1/exercises?${difficulty}muscle=${muscle}`, {
+    fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}`, {
         headers: {
             "X-Api-Key": "tFQ/n5S4oNe5c3vERyx93Q==960u5EA6MmusTREM"
         }
@@ -139,6 +148,7 @@ function prevBtnFunction() {
 
 function showsWorkouts() {
 
+    
     //removes hide from next buttom
     nextBtn.classList.remove('hide')
     //MUSTAPHA:removes all children before display new children
@@ -178,7 +188,7 @@ function showsWorkouts() {
     workoutDetailsDiv.append(muscleEl)
     workoutDetailsDiv.append(equipmentEl)
     workoutDetailsDiv.append(instrEl)
-    console.log(workoutDetailsDiv);
+    
 }
 
 
