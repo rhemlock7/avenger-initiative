@@ -19,6 +19,8 @@ heroselectformEl.addEventListener('change', function (event) {
 
     getHeroInfo(hero)
 
+    heroColorPallet (hero)
+
 })
 
 // Function that takes the hero data and displays it on screen
@@ -163,16 +165,26 @@ heroselectformEl = document.querySelector("#hero-select-form")
     })
     
     //Tyler Section Changing color pallet for when Captain America is selected
-    function captainAmericaPallet () {
-        document.body.setAttribute("style", "background-color: #0e103f; color: white;");
+    function heroColorPallet (hero) {
+        if (hero === "Captain America") {
+            document.body.setAttribute("style", "background-color: #0e103f; color: white;");
+            document.querySelector("#colorPallet").setAttribute("style", "background-color: #aa1428; border-color: #aa1428")
+            document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #aa1428")
+            document.querySelector("#weekly-view-section").setAttribute("style", "background-color: white; border-color: white")
+        } else if (hero === "Hulk") {
+            document.body.setAttribute("style", "background-color: #533668; color: #533668;");
+            document.querySelector("#colorPallet").setAttribute("style", "background-color: #28A36E")
+            document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #28A36E")
+            document.querySelector("#weekly-view-section").setAttribute("style", "background-color: #28A36E")
+            
+        } else if (hero === "Black Widow") {
+            document.body.setAttribute("style", "background-color: #533668; color: #533668;");
+            document.querySelector("#colorPallet").setAttribute("style", "background-color: #28A36E")
+            document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #28A36E")
+            document.querySelector("#weekly-view-section").setAttribute("style", "background-color: #28A36E")
+        } 
     }
-
-    function hulkPallet () {
-        document.body.setAttribute("style", "background-color: #0e103f; color: white;");
-    }
-
-    
-    
+    // #28A36E #533668
 
 
 function createWeeklyView(heroValue) {
