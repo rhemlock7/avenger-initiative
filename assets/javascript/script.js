@@ -31,7 +31,6 @@ heroselectformEl.on('change', function (event) {
 // Function that takes the hero data and displays it on screen
 function getHeroInfo(input) {
     let storedHero = localStorage.getItem("hero");
-    heroDifficulty = localStorage.getItem("heroDifficulty");
 
     let localHero;
 
@@ -95,14 +94,20 @@ function getHeroInfo(input) {
 workoutsEl = document.querySelector("#workouts")
 workoutsEl.addEventListener('change', function (event) {
 
-    let muscle = event.target.value;
-    // let difficulty = 'difficulty='+ "expert&";
-    console.log(muscle);
+    if (heroDifficulty === "expert") {
 
-    //${heroDifficulty}
+        heroDifficulty = "intermediate"
+        
+    }
+
+    let muscle = event.target.value;
+    console.log(muscle);
+    var level = "difficulty=" + heroDifficulty + "&";
+
+
         
 
-    fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}`, {
+    fetch(`https://api.api-ninjas.com/v1/exercises?${level}muscle=${muscle}`, {
         headers: {
             "X-Api-Key": "tFQ/n5S4oNe5c3vERyx93Q==960u5EA6MmusTREM"
         }
@@ -152,6 +157,7 @@ function prevBtnFunction() {
 
 function showsWorkouts() {
 
+    
     //removes hide from next buttom
     nextBtn.classList.remove('hide')
     //MUSTAPHA:removes all children before display new children
@@ -191,7 +197,7 @@ function showsWorkouts() {
     workoutDetailsDiv.append(muscleEl)
     workoutDetailsDiv.append(equipmentEl)
     workoutDetailsDiv.append(instrEl)
-    console.log(workoutDetailsDiv);
+    
 }
 
 
