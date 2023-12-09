@@ -94,12 +94,17 @@ function getHeroInfo(input) {
 workoutsEl = document.querySelector("#workouts")
 workoutsEl.addEventListener('change', function (event) {
 
+    if (heroDifficulty === "expert") {
+
+        heroDifficulty = "intermediate"
+        
+    }
 
     let muscle = event.target.value;
     console.log(muscle);
     var level = "difficulty=" + heroDifficulty + "&";
 
-    //${heroDifficulty}
+
         
 
     fetch(`https://api.api-ninjas.com/v1/exercises?${level}muscle=${muscle}`, {
