@@ -100,6 +100,7 @@ workoutsEl.addEventListener('change', function (event) {
     console.log(muscle);
 
     //${heroDifficulty}
+        
 
     fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}`, {
         headers: {
@@ -248,6 +249,7 @@ function heroColorPallet(hero) {
 function createWeeklyView(heroDifficulty) {
     var weeklyWorkoutContainer = document.createElement('div');
     weeklyWorkoutContainer.setAttribute("id", "workout-weekly-container")
+    weeklyWorkoutContainer.classList.add("flex-col", "md:flex-row")
 
     // Workout splits and days of week stored in this object
     var daysOfWeek = [
@@ -331,7 +333,8 @@ function createWeeklyView(heroDifficulty) {
         var workoutOption = document.createElement('option');
 
         // Set styling for daysOfWeek cards
-        dayOfWeekContainer.setAttribute("style", "background-color:black; color:white; height:150px; padding:10px; margin-top:15px; text-align:left; width:13.5%")
+        dayOfWeekContainer.setAttribute("style", "background-color:black; color:white; height:150px; padding:10px; margin-top:15px; text-align:left;")
+        dayOfWeekContainer.classList.add("w-full", "md:w-1/10", "md:m-1")
         dayOfWeekTitle.setAttribute("style", "font-size: 1.5em;")
         workoutTitle.setAttribute("style", "margin-top:10px;")
         dayOfWeekDetails.setAttribute("style", "margin-top:10px;")

@@ -24,23 +24,21 @@
 </head>
 
 <body>
-
     <!-- Navigation -->
-    <header id="header" class="flex justify-between align-center px-12 py-5 bg-red-700 text-white">
+        <header id="header" class="container-fluid m-0 p-0 flex justify-evenly align-center bg-red-700 text-white">
 
-        <!--TC 12/7 12am: Added Header Lightning Bolt PNG images. -->
-        <img src="assets/images/left-light.png" alt="lightning bolt">
-        <h1 class="text-5xl">Avengers Initiative</h1>
-        <img src="assets/images/Right-light.png" alt="lightning bolt">
-    </header>
-
-    <main id="main-body-container" class="mx-4">
+            <!--TC 12/7 12am: Added Header Lightning Bolt PNG images. -->
+            <img class="d-none d-lg-block d-xl-block" src="assets/images/left-light.png" alt="lightning bolt">
+            <h1 class="text-5xl text-sm-center w-100 ">Avengers Initiative</h1>
+            <img class= "d-none d-lg-block d-xl-block" src="assets/images/Right-light.png" alt="lightning bolt">
+        </header>
+    <main id="main-body-container" class="container-fluid col-md-12">
 
         <!-- Main Content Section -->
-        <section id="hero-content-section" class="grid grid-rows-1 grid-flow-col gap-4 my-5">
+        <section id="hero-content-section" class="grid sm:grid-flow-row md:grid-flow-row grid-rows-1 lg:grid-flow-col gap-4 my-5">
 
             <!-- Hero Select Container -->
-            <div id="colorPallet"class=" border-solid border-4 border-black w-full rounded p-4">
+            <div id="colorPallet"class="border-solid border-4 border-black w-full rounded p-4">
                 <div id="input-view" class="">
                     <h2>Select Your Hero</h2>
 
@@ -63,7 +61,7 @@
             </div>
 
             <!-- Daily Routine Container -->
-            <div id="daily-routine-container" class=" border-solid border-4 border-black w-full rounded p-3">
+            <div id="daily-routine-container" class="border-solid border-4 border-black w-full rounded p-3">
                 <div id="daily-view" class="">
                     <h2>Daily View Container</h2>
 
@@ -86,7 +84,7 @@
 
         <!-- Weekly Routine Container -->
         <section id="weekly-view-section">
-            <div id="weekly-container" class="col-12 text-center border-solid border-4 border-black rounded h-64 p-3">
+            <div id="weekly-container" class="text-center border-solid border-4 border-black rounded m-1 p-3">
                 <h2>Weekly View</h2>
 
             </div>
