@@ -243,7 +243,7 @@ heroselectformEl = document.querySelector("#hero-select-form")
 function createWeeklyView(heroValue) {
     var weeklyWorkoutContainer = document.createElement('div');
     weeklyWorkoutContainer.setAttribute("id", "workout-weekly-container")
-    weeklyWorkoutContainer.classList.add("grid", "row")
+    weeklyWorkoutContainer.classList.add("flex-col", "md:flex-row")
     var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
     if (weeklyViewContainer.hasChildNodes()) {
@@ -262,7 +262,8 @@ function createWeeklyView(heroValue) {
 
         // Set styling for daysOfWeek
 
-        dayOfWeekContainer.setAttribute("style", "background-color:black; color:white; height:150px; padding:10px; margin-top:15px; text-align:left; width:13.5%")
+        dayOfWeekContainer.setAttribute("style", "background-color:black; color:white; height:150px; padding:10px; margin-top:15px; text-align:left;")
+        dayOfWeekContainer.classList.add("w-full", "md:w-1/10", "md:m-1")
         dayOfWeekTitle.setAttribute("style", "font-size: 1.5em;")
         dayOfWeekDetails.setAttribute("style", "margin-top:20px;")
 
