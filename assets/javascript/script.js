@@ -5,6 +5,7 @@ var hulk = 'Iron Man'
 var captain = 'Captain America'
 var heroDetailDiv = document.querySelector('#hero-details');
 var weeklyViewContainer = document.querySelector('#weekly-container');
+var workoutDropdown = document.querySelector('#workout-dropdown')
 var workoutIndex = 0;
 var workoutData;
 var heroDifficulty;
@@ -14,7 +15,7 @@ heroselectformEl = $("#hero-select-form")
 heroselectformEl.on('change', function (event) {
 
     let hero = event.target.value;
-    heroDifficulty = $(this).find(":selected").data("difficulty") 
+    heroDifficulty = $(this).find(":selected").data("difficulty")
     console.log(heroDifficulty)
     // console.log(hero);
     // console.log(event.target.getAttribute("data-difficulty"))
@@ -44,49 +45,49 @@ function getHeroInfo(input) {
 
     if (storedHero != null) {
         fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${localHero}&apikey=851e0da0c6b577d3681246bac28477e8`)
-        .then(res => res.json())
-        .then(data => {
-            // console.log(data);
-            // console.log(data.data.results[0])
-            // console.log("Name: " + data.data.results[0].name)
-            // console.log("Image Link: " + data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension)
-            // console.log("Description: " + data.data.results[0].description)
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                // console.log(data.data.results[0])
+                // console.log("Name: " + data.data.results[0].name)
+                // console.log("Image Link: " + data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension)
+                // console.log("Description: " + data.data.results[0].description)
 
-            function displayHero() {
-                // Create HTML elements
-                var heroImage = document.createElement('img');
-                var heroNameH3 = document.createElement('h3');
-                var heroDescription = document.createElement('p');
+                function displayHero() {
+                    // Create HTML elements
+                    var heroImage = document.createElement('img');
+                    var heroNameH3 = document.createElement('h3');
+                    var heroDescription = document.createElement('p');
 
-                // Set HTML elements' text content to be hero data
-                heroImage.setAttribute("src", data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension);
-                heroImage.setAttribute("alt", data.data.results[0].name);
-                heroImage.setAttribute("style", "max-width:400px; width:50%; border-radius:24px; margin:15px 0")
-                heroNameH3.textContent = data.data.results[0].name;
-                heroNameH3.setAttribute("style", "font-size:3em;")
-                heroDescription.textContent = data.data.results[0].description;
-                heroDescription.setAttribute("style", "width:75%;")
+                    // Set HTML elements' text content to be hero data
+                    heroImage.setAttribute("src", data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension);
+                    heroImage.setAttribute("alt", data.data.results[0].name);
+                    heroImage.setAttribute("style", "max-width:400px; width:50%; border-radius:24px; margin:15px 0")
+                    heroNameH3.textContent = data.data.results[0].name;
+                    heroNameH3.setAttribute("style", "font-size:3em;")
+                    heroDescription.textContent = data.data.results[0].description;
+                    heroDescription.setAttribute("style", "width:75%;")
 
-                heroDetailDiv.append(heroImage);
-                heroDetailDiv.append(heroNameH3);
-                heroDetailDiv.append(heroDescription);
-            }
-
-            if (heroDetailDiv.hasChildNodes()) {
-                // Loop backward to remove all children
-                for (let i = heroDetailDiv.children.length - 1; i >= 0; i--) {
-                    heroDetailDiv.removeChild(heroDetailDiv.children[i]);
+                    heroDetailDiv.append(heroImage);
+                    heroDetailDiv.append(heroNameH3);
+                    heroDetailDiv.append(heroDescription);
                 }
 
-                displayHero()
-            } else {
-                displayHero();
-            }
+                if (heroDetailDiv.hasChildNodes()) {
+                    // Loop backward to remove all children
+                    for (let i = heroDetailDiv.children.length - 1; i >= 0; i--) {
+                        heroDetailDiv.removeChild(heroDetailDiv.children[i]);
+                    }
 
-            //Change localHero to be heroDifficulty
-            createWeeklyView(localHero)
-        })
-}
+                    displayHero()
+                } else {
+                    displayHero();
+                }
+
+                //Change localHero to be heroDifficulty
+                createWeeklyView(heroDifficulty)
+            })
+    }
 }
 
 
@@ -115,6 +116,8 @@ workoutsEl.addEventListener('change', function (event) {
         })
 
 })
+
+// Displays the next workout in the list
 function nextBtnFunction() {
     if (workoutIndex < 6) {
         prevBtn.classList.remove('diable-btn')
@@ -128,8 +131,9 @@ function nextBtnFunction() {
             nextBtn.classList.add('diable-btn')
         }
     }
-
 }
+
+// Displays the previous workout in the list
 function prevBtnFunction() {
     if (workoutIndex > 0) {
         nextBtn.classList.remove('diable-btn')
@@ -143,9 +147,6 @@ function prevBtnFunction() {
             prevBtn.classList.add('diable-btn')
         }
     }
-
-
-
 }
 
 function showsWorkouts() {
@@ -201,54 +202,100 @@ nextBtn.addEventListener("click", nextBtnFunction);
 prevBtn.addEventListener("click", prevBtnFunction)
 
 heroselectformEl = document.querySelector("#hero-select-form")
-    heroselectformEl.addEventListener('change', function() {
-        let options = document.querySelector("#hero-select-dropdown")
-            console.log(options)
-        if (options.value === "captain") {
+heroselectformEl.addEventListener('change', function () {
+    let options = document.querySelector("#hero-select-dropdown")
+    console.log(options)
+    if (options.value === "captain") {
 
-            console.log("I am america")
-        } else if (options.value === "hulk") {
-            console.log("I am hulk")
-        }
-    })
-    
-    //Tyler Section Changing color pallet for when hero is selected. Being called within the event listener on the form id.
-    function heroColorPallet (hero) {
-        if (hero === "Captain America") {
-            document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(100deg, #0e103f 3%, white 50%, #aa1428 100%)')
-            document.querySelector("h1").setAttribute('style', 'color: black')
-            document.body.setAttribute("style", "background-color: #0e103f; color: white");
-            document.querySelector("#colorPallet").setAttribute("style", "background-color: #aa1428; border-color: #aa1428")
-            document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #aa1428")
-            document.querySelector("#weekly-container").setAttribute("style", "background-color: #aa1428; border-color: white")
-            document.querySelector("#prev").setAttribute("style", "background-color: white; color: #aa1428;");
-            document.querySelector("#next").setAttribute("style", "background-color: white; color: #aa1428;");
-        } else if (hero === "Hulk") {
-            document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #28A36E 3%, white 50%, #533668 100%)')
-            document.querySelector("h1").setAttribute('style', 'color: black')
-            document.body.setAttribute("style", "background-color: #533668; color: white;");
-            document.querySelector("#colorPallet").setAttribute("style", "background-color: #28A36E")
-            document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #28A36E")
-            document.querySelector("#weekly-container").setAttribute("style", "background-color: #28A36E")
-            document.querySelector("#prev").setAttribute("style", "background-color: #533668; color: #28A36E;");
-            document.querySelector("#next").setAttribute("style", "background-color: #533668; color: #28A36E;");
-        } else if (hero === "Black Widow") {
-            document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #7A1F1E 3%, #F7CBB2 50%, #645957 100%)')
-            document.querySelector("h1").setAttribute('style', 'color: black')
-            document.body.setAttribute("style", "background-color: #645957;");
-            document.querySelector("#colorPallet").setAttribute("style", "background-color: #F7CBB2; color: black")
-            document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #F7CBB2")
-            document.querySelector("#weekly-container").setAttribute("style", "background-color: #F7CBB2")
-            document.querySelector("#prev").setAttribute("style", "background-color: #645957; color: #F7CBB2;");
-            document.querySelector("#next").setAttribute("style", "background-color: #645957; color: #F7CBB2;");
-        } 
+        console.log("I am america")
+    } else if (options.value === "hulk") {
+        console.log("I am hulk")
     }
+})
 
-function createWeeklyView(heroValue) {
+//Tyler Section Changing color pallet for when hero is selected. Being called within the event listener on the form id.
+function heroColorPallet(hero) {
+    if (hero === "Captain America") {
+        document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(100deg, #0e103f 3%, white 50%, #aa1428 100%)')
+        document.querySelector("h1").setAttribute('style', 'color: black')
+        document.body.setAttribute("style", "background-color: #0e103f; color: white");
+        document.querySelector("#colorPallet").setAttribute("style", "background-color: #aa1428; border-color: #aa1428")
+        document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #aa1428")
+        document.querySelector("#weekly-container").setAttribute("style", "background-color: #aa1428; border-color: white")
+        document.querySelector("#prev").setAttribute("style", "background-color: white; color: #aa1428;");
+        document.querySelector("#next").setAttribute("style", "background-color: white; color: #aa1428;");
+    } else if (hero === "Hulk") {
+        document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #28A36E 3%, white 50%, #533668 100%)')
+        document.querySelector("h1").setAttribute('style', 'color: black')
+        document.body.setAttribute("style", "background-color: #533668; color: white;");
+        document.querySelector("#colorPallet").setAttribute("style", "background-color: #28A36E")
+        document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #28A36E")
+        document.querySelector("#weekly-container").setAttribute("style", "background-color: #28A36E")
+        document.querySelector("#prev").setAttribute("style", "background-color: #533668; color: #28A36E;");
+        document.querySelector("#next").setAttribute("style", "background-color: #533668; color: #28A36E;");
+    } else if (hero === "Black Widow") {
+        document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #7A1F1E 3%, #F7CBB2 50%, #645957 100%)')
+        document.querySelector("h1").setAttribute('style', 'color: black')
+        document.body.setAttribute("style", "background-color: #645957;");
+        document.querySelector("#colorPallet").setAttribute("style", "background-color: #F7CBB2; color: black")
+        document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #F7CBB2")
+        document.querySelector("#weekly-container").setAttribute("style", "background-color: #F7CBB2")
+        document.querySelector("#prev").setAttribute("style", "background-color: #645957; color: #F7CBB2;");
+        document.querySelector("#next").setAttribute("style", "background-color: #645957; color: #F7CBB2;");
+    }
+}
+
+function createWeeklyView(heroDifficulty) {
     var weeklyWorkoutContainer = document.createElement('div');
     weeklyWorkoutContainer.setAttribute("id", "workout-weekly-container")
-    var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
+    // Workout splits and days of week stored in this object
+    var daysOfWeek = [
+        {
+            day: "Sunday",
+            beginner: "Rest",
+            intermediate: "Rest",
+            expert: "Rest"
+        },
+        {
+            day: "Monday",
+            beginner: "Chest",
+            intermediate: "Chest",
+            expert: "Chest"
+        },
+        {
+            day: "Tuesday",
+            beginner: "Rest",
+            intermediate: "Rest",
+            expert: "Lats"
+        },
+        {
+            day: "Wednesday",
+            beginner: "Lats",
+            intermediate: "Lats",
+            expert: "Rest"
+        },
+        {
+            day: "Thursday",
+            beginner: "Rest",
+            intermediate: "Quadriceps",
+            expert: "Quadriceps"
+        },
+        {
+            day: "Friday",
+            beginner: "Quadriceps",
+            intermediate: "Biceps",
+            expert: "Shoulders"
+        },
+        {
+            day: "Saturday",
+            beginner: "Rest",
+            intermediate: "Rest",
+            expert: "Biceps"
+        },
+    ]
+
+    // Removes the previous weekly view to make room for the new one
     if (weeklyViewContainer.hasChildNodes()) {
         // Loop backward to remove all children
         for (let i = weeklyViewContainer.children.length - 1; i >= 0; i--) {
@@ -256,25 +303,57 @@ function createWeeklyView(heroValue) {
         }
     }
 
+    // Removes the previous dropdown options to make room for new ones
+    if (workoutDropdown.hasChildNodes()) {
+        // Loop backward to remove all children
+        for (let i = workoutDropdown.children.length - 1; i >= 0; i--) {
+            workoutDropdown.removeChild(workoutDropdown.children[i]);
+        }
+    }
+
+    // Creates a card for each day of the week and appends it to the weekly container
     for (i = 0; i < 7; i++) {
+        if (heroDifficulty === "beginner") {
+            difficulty = daysOfWeek[i].beginner;
+        } else if (heroDifficulty === "intermediate") {
+            difficulty = daysOfWeek[i].intermediate;
+        } else if (heroDifficulty === "expert") {
+            difficulty = daysOfWeek[i].expert;
+        } else {
+            difficulty = ""
+        }
 
         // Create HTML Elements
         var dayOfWeekContainer = document.createElement('div');
         var dayOfWeekTitle = document.createElement('h4');
+        var workoutTitle = document.createElement('h5');
         var dayOfWeekDetails = document.createElement('p');
+        var workoutOption = document.createElement('option');
 
-        // Set styling for daysOfWeek
-
+        // Set styling for daysOfWeek cards
         dayOfWeekContainer.setAttribute("style", "background-color:black; color:white; height:150px; padding:10px; margin-top:15px; text-align:left; width:13.5%")
         dayOfWeekTitle.setAttribute("style", "font-size: 1.5em;")
-        dayOfWeekDetails.setAttribute("style", "margin-top:20px;")
+        workoutTitle.setAttribute("style", "margin-top:10px;")
+        dayOfWeekDetails.setAttribute("style", "margin-top:10px;")
+
+        // Option dropdown attributes
+        workoutOption.textContent = "Select Workout"
+        if (difficulty !== "Rest") {
+            workoutOption.textContent = difficulty;
+            workoutOption.setAttribute("value", difficulty.toLowerCase())
+
+            // Append workout options to the dropdown
+            workoutDropdown.append(workoutOption)
+        }
 
         // Set textContent for each element
-        dayOfWeekTitle.textContent = daysOfWeek[i];
-        dayOfWeekDetails.textContent = "Your hero is " + heroValue;
+        dayOfWeekTitle.textContent = daysOfWeek[i].day;
+        workoutTitle.textContent = "Goal:"
+        dayOfWeekDetails.textContent = difficulty;
 
         // Append Text to DayOfWeek div
         dayOfWeekContainer.append(dayOfWeekTitle);
+        dayOfWeekContainer.append(workoutTitle);
         dayOfWeekContainer.append(dayOfWeekDetails);
 
         // Append daysOfWeek containers to weeklyView container
@@ -282,7 +361,6 @@ function createWeeklyView(heroValue) {
         weeklyViewContainer.append(weeklyWorkoutContainer)
     }
 
-    //weeklyViewContainer
 }
 
 // Calls function immediately to get hero from local storage
