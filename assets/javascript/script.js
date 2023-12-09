@@ -93,18 +93,10 @@ function getHeroInfo(input) {
 workoutsEl = document.querySelector("#workouts")
 workoutsEl.addEventListener('change', function (event) {
 
-    let difficulty = 'difficulty='+ "expert&";
-    console.log(localHero)
-    if (localHero === "Thor") {
-        
-        
-        console
-          
-    }
 
     let muscle = event.target.value;
     console.log(muscle);
-    var level = heroDifficulty + "";
+    var level = "difficulty=" + heroDifficulty + "&";
 
     //${heroDifficulty}
 
