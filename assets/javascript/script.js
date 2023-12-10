@@ -395,15 +395,15 @@ console.log(heroDifficulty)
             leftLightEl.classList.add(displaySwitchframe1[count])
             rightLightEl.classList.add(displaySwitchframe1[count])
             if (count === 1) {
-                leftLightFrame2El.classList.add("d-lg-block")
-                rightLightFrame2El.classList.add("d-lg-block")
+                leftLightFrame2El.classList.add("d-lg-block", "ml-10")
+                rightLightFrame2El.classList.add("d-lg-block", "mr-10")
             } else {
                 leftLightFrame2El.classList.remove("d-lg-block")
                 rightLightFrame2El.classList.remove("d-lg-block")
             }
             count += 1
         }
-        , 800)
+        , 600)
     }
     lightningAnimate()
     //first frame left and right to display none
