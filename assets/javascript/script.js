@@ -16,11 +16,8 @@ heroselectformEl.on('change', function (event) {
 
     let hero = event.target.value;
     heroDifficulty = $(this).find(":selected").data("difficulty")
-    console.log(heroDifficulty)
-    // console.log(hero);
-    // console.log(event.target.getAttribute("data-difficulty"))
-    // console.log(hero)
-    // console.log(event.target.data)
+
+    // Stores hero values in local storage
     localStorage.setItem("hero", hero);
     localStorage.setItem("heroDifficulty", heroDifficulty)
 
@@ -30,10 +27,14 @@ heroselectformEl.on('change', function (event) {
 
 // Function that takes the hero data and displays it on screen
 function getHeroInfo(input) {
+
+    // Gets hero values from local storage
     let storedHero = localStorage.getItem("hero");
+    heroDifficulty = localStorage.getItem("heroDifficulty");
 
     let localHero;
 
+    // If there is a user input, use that input. Otherwise use what is in local storage.
     if (input) {
         localHero = input;
     } else {
@@ -46,11 +47,6 @@ function getHeroInfo(input) {
         fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${localHero}&apikey=851e0da0c6b577d3681246bac28477e8`)
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
-                // console.log(data.data.results[0])
-                // console.log("Name: " + data.data.results[0].name)
-                // console.log("Image Link: " + data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension)
-                // console.log("Description: " + data.data.results[0].description)
 
                 function displayHero() {
                     // Create HTML elements
@@ -83,8 +79,9 @@ function getHeroInfo(input) {
                     displayHero();
                 }
 
-                //Change localHero to be heroDifficulty
+                //Display weekly workout split based on the hero's difficulty
                 createWeeklyView(heroDifficulty)
+                getWorkoutData();
             })
     }
 }
@@ -92,20 +89,24 @@ function getHeroInfo(input) {
 
 //MUSTAPHA: fetches the workout api and responds with a JSON 
 workoutsEl = document.querySelector("#workouts")
-workoutsEl.addEventListener('change', function (event) {
+workoutsEl.addEventListener('change', getWorkoutData)
 
+function getWorkoutData(event) {
     if (heroDifficulty === "expert") {
-
         heroDifficulty = "intermediate"
-        
     }
 
-    let muscle = event.target.value;
-    console.log(muscle);
+    let muscle;
+
+    // If there is a user event, use that input. Otherwise default to chest workouts as the starter to display.
+    if (event) {
+        muscle = event.target.value;
+    } else {
+        muscle = "chest";
+    }
+
     var level = "difficulty=" + heroDifficulty + "&";
 
-
-        
 
     fetch(`https://api.api-ninjas.com/v1/exercises?${level}muscle=${muscle}`, {
         headers: {
@@ -114,14 +115,11 @@ workoutsEl.addEventListener('change', function (event) {
     })
         .then(res => res.json())
         .then(data => {
-
-            console.log(data)
             workoutData = data;
             showsWorkouts();
-
         })
 
-})
+}
 
 // Displays the next workout in the list
 function nextBtnFunction() {
@@ -129,9 +127,7 @@ function nextBtnFunction() {
         prevBtn.classList.remove('diable-btn')
         workoutIndex++;
         showsWorkouts(workoutIndex);
-        console.log("you clicked me ")
         prevBtn.classList.remove('hide')
-        console.log(workoutIndex)
 
         if (workoutIndex === 6) {
             nextBtn.classList.add('diable-btn')
@@ -145,9 +141,7 @@ function prevBtnFunction() {
         nextBtn.classList.remove('diable-btn')
         workoutIndex--;
         showsWorkouts(workoutIndex);
-        console.log("you clicked prev ")
         prevBtn.classList.remove('diable-btn')
-        console.log(workoutIndex)
 
         if (workoutIndex === 0) {
             prevBtn.classList.add('diable-btn')
@@ -156,10 +150,9 @@ function prevBtnFunction() {
 }
 
 function showsWorkouts() {
-
-    
     //removes hide from next buttom
     nextBtn.classList.remove('hide')
+
     //MUSTAPHA:removes all children before display new children
     if (workoutDetailsDiv.hasChildNodes()) {
         for (let i = workoutDetailsDiv.children.length - 1; i >= 0; i--) {
@@ -173,11 +166,7 @@ function showsWorkouts() {
     var muscle = workoutData[workoutIndex].muscle;
     var equipment = workoutData[workoutIndex].equipment;
     var instr = workoutData[workoutIndex].instructions;
-    console.log(workoutName);
-    console.log(category);
-    console.log(muscle);
-    console.log(equipment);
-    console.log(instr);
+
 
     //MUSTAPHA: creates elements for retrieved data
     var workoutNameEl = document.createElement('li')
@@ -201,24 +190,11 @@ function showsWorkouts() {
 }
 
 
-
 //creates variables for event listener
 var nextBtn = document.querySelector('#next');
 var prevBtn = document.querySelector('#prev');
 nextBtn.addEventListener("click", nextBtnFunction);
 prevBtn.addEventListener("click", prevBtnFunction)
-
-heroselectformEl = document.querySelector("#hero-select-form")
-heroselectformEl.addEventListener('change', function () {
-    let options = document.querySelector("#hero-select-dropdown")
-    console.log(options)
-    if (options.value === "captain") {
-
-        console.log("I am america")
-    } else if (options.value === "hulk") {
-        console.log("I am hulk")
-    }
-})
 
 //Tyler Section Changing color pallet for when hero is selected. Being called within the event listener on the form id.
 function heroColorPallet(hero) {
@@ -252,6 +228,7 @@ function heroColorPallet(hero) {
     }
 }
 
+// Function used to create weekly workout container.
 function createWeeklyView(heroDifficulty) {
     var weeklyWorkoutContainer = document.createElement('div');
     weeklyWorkoutContainer.setAttribute("id", "workout-weekly-container")
@@ -370,8 +347,9 @@ function createWeeklyView(heroDifficulty) {
         weeklyViewContainer.append(weeklyWorkoutContainer)
     }
 
+    // display workouts
+    getWorkoutData();
 }
 
-// Calls function immediately to get hero from local storage
+// Calls function immediately to get hero information from local storage
 getHeroInfo()
-console.log(heroDifficulty)
