@@ -403,7 +403,7 @@ console.log(heroDifficulty)
             }
             count += 1
         }
-        , 1100)
+        , 800)
     }
     lightningAnimate()
     //first frame left and right to display none
