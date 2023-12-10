@@ -383,7 +383,7 @@ console.log(heroDifficulty)
         let leftLightFrame2El = document.querySelector("#leftLightFrame2")
         let rightLightFrame2El= document.querySelector("#rightLightFrame2")
         let hideEl = "d-none"
-        let unhideEl = "d-lg-block"
+        let unhideEl = "d-xl-block"
         let displaySwitchframe1 = [unhideEl, hideEl]
         count = 0
         setInterval (function() {
@@ -395,11 +395,11 @@ console.log(heroDifficulty)
             leftLightEl.classList.add(displaySwitchframe1[count])
             rightLightEl.classList.add(displaySwitchframe1[count])
             if (count === 1) {
-                leftLightFrame2El.classList.add("d-lg-block", "ml-10")
-                rightLightFrame2El.classList.add("d-lg-block", "mr-10")
+                leftLightFrame2El.classList.add("d-xl-block", "ml-10")
+                rightLightFrame2El.classList.add("d-xl-block", "mr-10")
             } else {
-                leftLightFrame2El.classList.remove("d-lg-block")
-                rightLightFrame2El.classList.remove("d-lg-block")
+                leftLightFrame2El.classList.remove("d-xl-block")
+                rightLightFrame2El.classList.remove("d-xl-block")
             }
             count += 1
         }
