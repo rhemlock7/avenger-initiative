@@ -223,7 +223,7 @@ heroselectformEl.addEventListener('change', function () {
 //Tyler Section Changing color pallet for when hero is selected. Being called within the event listener on the form id.
 function heroColorPallet(hero) {
     if (hero === "Captain America") {
-        document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(100deg, #0e103f 3%, white 50%, #aa1428 100%); height:75px')
+        document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(100deg, #0e103f 3%, white 50%, #aa1428 100%)')
         document.querySelector("h1").setAttribute('style', 'color: black')
         document.body.setAttribute("style", "background-color: #0e103f; color: white");
         document.querySelector("#colorPallet").setAttribute("style", "background-color: #aa1428; border-color: #aa1428")
@@ -232,7 +232,7 @@ function heroColorPallet(hero) {
         prevBtn.setAttribute("style", "background-color: white; color: #aa1428;");
         nextBtn.setAttribute("style", "background-color: white; color: #aa1428;");
     } else if (hero === "Hulk") {
-        document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #28A36E 3%, white 50%, #533668 100%); height:75px')
+        document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #28A36E 3%, white 50%, #533668 100%);')
         document.querySelector("h1").setAttribute('style', 'color: black')
         document.body.setAttribute("style", "background-color: #533668; color: white;");
         document.querySelector("#colorPallet").setAttribute("style", "background-color: #28A36E")
@@ -241,7 +241,7 @@ function heroColorPallet(hero) {
         prevBtn.setAttribute("style", "background-color: #533668; color: #28A36E;");
         nextBtn.setAttribute("style", "background-color: #533668; color: #28A36E;");
     } else if (hero === "Black Widow") {
-        document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #7A1F1E 3%, #F7CBB2 50%, #645957 100%); height:75px')
+        document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #7A1F1E 3%, #F7CBB2 50%, #645957 100%)')
         document.querySelector("h1").setAttribute('style', 'color: black')
         document.body.setAttribute("style", "background-color: #645957;");
         document.querySelector("#colorPallet").setAttribute("style", "background-color: #F7CBB2; color: black")
@@ -380,20 +380,33 @@ console.log(heroDifficulty)
     function lightningAnimate() {
         let leftLightEl = document.querySelector("#leftLight")
         let rightLightEl =document.querySelector("#rightLight")
+        let leftLightFrame2El = document.querySelector("#leftLightFrame2")
+        let rightLightFrame2El= document.querySelector("#rightLightFrame2")
         let hideEl = "d-none"
         let unhideEl = "d-lg-block"
-        let displaySwitch = [unhideEl, hideEl]
+        let displaySwitchframe1 = [unhideEl, hideEl]
         count = 0
         setInterval (function() {
             if (count > 1) {
                 count = 0
             }
-            leftLightEl.classList.remove(displaySwitch[count-1])
-            rightLightEl.classList.remove(displaySwitch[count-1])
-            leftLightEl.classList.add(displaySwitch[count])
-            rightLightEl.classList.add(displaySwitch[count])
+            leftLightEl.classList.remove(displaySwitchframe1[count-1])
+            rightLightEl.classList.remove(displaySwitchframe1[count-1])
+            leftLightEl.classList.add(displaySwitchframe1[count])
+            rightLightEl.classList.add(displaySwitchframe1[count])
+            if (count === 1) {
+                leftLightFrame2El.classList.add("d-lg-block")
+                rightLightFrame2El.classList.add("d-lg-block")
+            } else {
+                leftLightFrame2El.classList.remove("d-lg-block")
+                rightLightFrame2El.classList.remove("d-lg-block")
+            }
             count += 1
         }
         , 1100)
     }
     lightningAnimate()
+    //first frame left and right to display none
+    //show second frame
+    //then hide second frame
+    //show first frame
