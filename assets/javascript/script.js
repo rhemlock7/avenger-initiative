@@ -53,14 +53,21 @@ function getHeroInfo(input) {
                     var heroImage = document.createElement('img');
                     var heroNameH3 = document.createElement('h3');
                     var heroDescription = document.createElement('p');
+                    var heroDescriptionData = data.data.results[0].description;
 
                     // Set HTML elements' text content to be hero data
                     heroImage.setAttribute("src", data.data.results[0].thumbnail.path + "." + data.data.results[0].thumbnail.extension);
                     heroImage.setAttribute("alt", data.data.results[0].name);
-                    heroImage.setAttribute("style", "max-width:400px; width:50%; border-radius:24px; margin:15px 0")
+                    heroImage.setAttribute("style", "max-width:400px; width:50%; min-width:200px; border-radius:24px; margin:15px 0")
                     heroNameH3.textContent = data.data.results[0].name;
                     heroNameH3.setAttribute("style", "font-size:3em;")
-                    heroDescription.textContent = data.data.results[0].description;
+
+                    if (heroDescriptionData === '') {
+                        heroDescription.textContent = "No description available. Coming soon."
+                    } else {
+                        heroDescription.textContent = heroDescriptionData;
+                    }
+
                     heroDescription.setAttribute("style", "width:75%;")
 
                     heroDetailDiv.append(heroImage);
