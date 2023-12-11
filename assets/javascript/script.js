@@ -175,6 +175,10 @@ function showsWorkouts() {
     var equipmentEl = document.createElement('li')
     var instrEl = document.createElement('li')
     instrEl.setAttribute("style", "font-size: 15px; font-family:roboto")
+    workoutNameEl.setAttribute("style", "font-size:1.75em;")
+    categoryEl.setAttribute("style", "font-size: 1.75em;")
+    muscleEl.setAttribute("style", "font-size: 1.75em;")
+    equipmentEl.setAttribute("style", "font-size: 1.75em;")
     workoutNameEl.textContent = "Workout - " + workoutName;
     categoryEl.textContent = "Type - " + category;
     muscleEl.textContent = "Muscle - " + muscle;
@@ -186,7 +190,7 @@ function showsWorkouts() {
     workoutDetailsDiv.append(muscleEl)
     workoutDetailsDiv.append(equipmentEl)
     workoutDetailsDiv.append(instrEl)
-    
+
 }
 
 
@@ -234,7 +238,7 @@ function heroColorPallet(hero) {
         weeklyViewContainer.setAttribute("style", "background-color: #b80000")
         prevBtn.setAttribute("style", "background-color: #dadada; color: #b80000;");
         nextBtn.setAttribute("style", "background-color: #dadada; color: #b80000;");
-}
+    }
 }
 
 // Function used to create weekly workout container.
@@ -363,38 +367,35 @@ function createWeeklyView(heroDifficulty) {
 // Calls function immediately to get hero from local storage
 
 //#Animate Lightning
-    function lightningAnimate() {
-        let leftLightEl = document.querySelector("#leftLight")
-        let rightLightEl =document.querySelector("#rightLight")
-        let leftLightFrame2El = document.querySelector("#leftLightFrame2")
-        let rightLightFrame2El= document.querySelector("#rightLightFrame2")
-        let hideEl = "d-none"
-        let unhideEl = "d-xl-block"
-        let displaySwitchframe1 = [unhideEl, hideEl]
-        count = 0
-        setInterval (function() {
-            if (count > 1) {
-                count = 0
-            }
-            leftLightEl.classList.remove(displaySwitchframe1[count-1])
-            rightLightEl.classList.remove(displaySwitchframe1[count-1])
-            leftLightEl.classList.add(displaySwitchframe1[count])
-            rightLightEl.classList.add(displaySwitchframe1[count])
-            if (count === 1) {
-                leftLightFrame2El.classList.add("d-xl-block", "ml-10")
-                rightLightFrame2El.classList.add("d-xl-block", "mr-10")
-            } else {
-                leftLightFrame2El.classList.remove("d-xl-block")
-                rightLightFrame2El.classList.remove("d-xl-block")
-            }
-            count += 1
+function lightningAnimate() {
+    let leftLightEl = document.querySelector("#leftLight")
+    let rightLightEl = document.querySelector("#rightLight")
+    let leftLightFrame2El = document.querySelector("#leftLightFrame2")
+    let rightLightFrame2El = document.querySelector("#rightLightFrame2")
+    let hideEl = "d-none"
+    let unhideEl = "d-xl-block"
+    let displaySwitchframe1 = [unhideEl, hideEl]
+    count = 0
+    setInterval(function () {
+        if (count > 1) {
+            count = 0
         }
-        , 600)
+        leftLightEl.classList.remove(displaySwitchframe1[count - 1])
+        rightLightEl.classList.remove(displaySwitchframe1[count - 1])
+        leftLightEl.classList.add(displaySwitchframe1[count])
+        rightLightEl.classList.add(displaySwitchframe1[count])
+        if (count === 1) {
+            leftLightFrame2El.classList.add("d-xl-block", "ml-10")
+            rightLightFrame2El.classList.add("d-xl-block", "mr-10")
+        } else {
+            leftLightFrame2El.classList.remove("d-xl-block")
+            rightLightFrame2El.classList.remove("d-xl-block")
+        }
+        count += 1
     }
-    lightningAnimate()
-    //first frame left and right to display none
-    //show second frame
-    //then hide second frame
-    //show first frame
+        , 600)
+}
+
 // Calls function immediately to get hero information from local storage
 getHeroInfo()
+lightningAnimate()
