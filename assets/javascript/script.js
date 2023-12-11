@@ -204,27 +204,27 @@ function heroColorPallet(hero) {
         document.body.setAttribute("style", "background-color: #0e103f; color: white");
         document.querySelector("#colorPallet").setAttribute("style", "background-color: #aa1428; border-color: #aa1428")
         document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #aa1428")
-        document.querySelector("#weekly-container").setAttribute("style", "background-color: #aa1428; border-color: white")
-        document.querySelector("#prev").setAttribute("style", "background-color: white; color: #aa1428;");
-        document.querySelector("#next").setAttribute("style", "background-color: white; color: #aa1428;");
+        weeklyViewContainer.setAttribute("style", "background-color: #aa1428; border-color: white")
+        prevBtn.setAttribute("style", "background-color: white; color: #aa1428;");
+        nextBtn.setAttribute("style", "background-color: white; color: #aa1428;");
     } else if (hero === "Hulk") {
-        document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #28A36E 3%, white 50%, #533668 100%)')
+        document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #28A36E 3%, white 50%, #533668 100%);')
         document.querySelector("h1").setAttribute('style', 'color: black')
         document.body.setAttribute("style", "background-color: #533668; color: white;");
         document.querySelector("#colorPallet").setAttribute("style", "background-color: #28A36E")
         document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #28A36E")
-        document.querySelector("#weekly-container").setAttribute("style", "background-color: #28A36E")
-        document.querySelector("#prev").setAttribute("style", "background-color: #533668; color: #28A36E;");
-        document.querySelector("#next").setAttribute("style", "background-color: #533668; color: #28A36E;");
+        weeklyViewContainer.setAttribute("style", "background-color: #28A36E")
+        prevBtn.setAttribute("style", "background-color: #533668; color: #28A36E;");
+        nextBtn.setAttribute("style", "background-color: #533668; color: #28A36E;");
     } else if (hero === "Black Widow") {
         document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #7A1F1E 3%, #F7CBB2 50%, #645957 100%)')
         document.querySelector("h1").setAttribute('style', 'color: black')
         document.body.setAttribute("style", "background-color: #645957;");
         document.querySelector("#colorPallet").setAttribute("style", "background-color: #F7CBB2; color: black")
         document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #F7CBB2")
-        document.querySelector("#weekly-container").setAttribute("style", "background-color: #F7CBB2")
-        document.querySelector("#prev").setAttribute("style", "background-color: #645957; color: #F7CBB2;");
-        document.querySelector("#next").setAttribute("style", "background-color: #645957; color: #F7CBB2;");
+        weeklyViewContainer.setAttribute("style", "background-color: #F7CBB2")
+        prevBtn.setAttribute("style", "background-color: #645957; color: #F7CBB2;");
+        nextBtn.setAttribute("style", "background-color: #645957; color: #F7CBB2;");
     }
 }
 
@@ -351,5 +351,41 @@ function createWeeklyView(heroDifficulty) {
     getWorkoutData();
 }
 
+// Calls function immediately to get hero from local storage
+
+//#Animate Lightning
+    function lightningAnimate() {
+        let leftLightEl = document.querySelector("#leftLight")
+        let rightLightEl =document.querySelector("#rightLight")
+        let leftLightFrame2El = document.querySelector("#leftLightFrame2")
+        let rightLightFrame2El= document.querySelector("#rightLightFrame2")
+        let hideEl = "d-none"
+        let unhideEl = "d-xl-block"
+        let displaySwitchframe1 = [unhideEl, hideEl]
+        count = 0
+        setInterval (function() {
+            if (count > 1) {
+                count = 0
+            }
+            leftLightEl.classList.remove(displaySwitchframe1[count-1])
+            rightLightEl.classList.remove(displaySwitchframe1[count-1])
+            leftLightEl.classList.add(displaySwitchframe1[count])
+            rightLightEl.classList.add(displaySwitchframe1[count])
+            if (count === 1) {
+                leftLightFrame2El.classList.add("d-xl-block", "ml-10")
+                rightLightFrame2El.classList.add("d-xl-block", "mr-10")
+            } else {
+                leftLightFrame2El.classList.remove("d-xl-block")
+                rightLightFrame2El.classList.remove("d-xl-block")
+            }
+            count += 1
+        }
+        , 600)
+    }
+    lightningAnimate()
+    //first frame left and right to display none
+    //show second frame
+    //then hide second frame
+    //show first frame
 // Calls function immediately to get hero information from local storage
 getHeroInfo()
