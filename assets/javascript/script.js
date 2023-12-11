@@ -114,7 +114,7 @@ function getWorkoutData(event) {
 
     var level = "difficulty=" + heroDifficulty + "&";
 
-    fetch(`https://api.api-ninjas.com/v1/exercises?$${level}muscle=${muscle}`, {
+    fetch(`https://api.api-ninjas.com/v1/exercises?${level}muscle=${muscle}`, {
         headers: {
             "X-Api-Key": "tFQ/n5S4oNe5c3vERyx93Q==960u5EA6MmusTREM"
         }
