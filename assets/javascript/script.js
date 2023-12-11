@@ -68,7 +68,7 @@ function getHeroInfo(input) {
                         heroDescription.textContent = heroDescriptionData;
                     }
 
-                    heroDescription.setAttribute("style", "width:75%;")
+                    heroDescription.setAttribute("style", "font-size: 20px;")
 
                     heroDetailDiv.append(heroImage);
                     heroDetailDiv.append(heroNameH3);
@@ -180,16 +180,21 @@ function showsWorkouts() {
     var muscleEl = document.createElement('li')
     var equipmentEl = document.createElement('li')
     var instrEl = document.createElement('li')
-    instrEl.setAttribute("style", "font-size: 15px; font-family:roboto")
+
+    instrEl.setAttribute("style", "font-size: 20px; font-family:roboto")
     workoutNameEl.setAttribute("style", "font-size:1.75em;")
     categoryEl.setAttribute("style", "font-size: 1.75em;")
     muscleEl.setAttribute("style", "font-size: 1.75em;")
     equipmentEl.setAttribute("style", "font-size: 1.75em;")
+
+
     workoutNameEl.textContent = "Workout - " + workoutName;
     categoryEl.textContent = "Type - " + category;
     muscleEl.textContent = "Muscle - " + muscle;
     equipmentEl.textContent = "Equipment - " + equipment;
     instrEl.textContent = instr;
+
+
     //MUSTAPHA:appends the created elements to the html
     workoutDetailsDiv.append(workoutNameEl)
     workoutDetailsDiv.append(categoryEl)
