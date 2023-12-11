@@ -229,12 +229,21 @@ function heroColorPallet(hero) {
         document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #b80000 3%, #F7CBB2 50%, #645957 100%)')
         document.querySelector("h1").setAttribute('style', 'color: black')
         document.body.setAttribute("style", "background-color: #363131;");
-        document.querySelector("#colorPallet").setAttribute("style", "background-color: #b80000; color: black")
-        document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #b80000")
+        document.querySelector("#colorPallet").setAttribute("style", "background-color: #b80000; color: white")
+        document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #b80000; color: white")
         weeklyViewContainer.setAttribute("style", "background-color: #b80000")
         prevBtn.setAttribute("style", "background-color: #dadada; color: #b80000;");
         nextBtn.setAttribute("style", "background-color: #dadada; color: #b80000;");
-}
+    } else {
+        document.querySelector("#header").setAttribute('style', 'background-color:red')
+        document.querySelector("h1").setAttribute('style', 'color: black')
+        document.body.setAttribute("style", "background-color: white;");
+        document.querySelector("#colorPallet").setAttribute("style", "background-color: white; color: black")
+        document.querySelector("#daily-routine-container").setAttribute("style", "background-color: white; color: black")
+        weeklyViewContainer.setAttribute("style", "background-color: white")
+        prevBtn.setAttribute("style", "background-color: black; color: white;");
+        nextBtn.setAttribute("style", "background-color: black; color: white;");
+    }
 }
 
 // Function used to create weekly workout container.
