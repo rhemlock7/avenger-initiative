@@ -217,7 +217,7 @@ function heroColorPallet(hero) {
         prevBtn.setAttribute("style", "background-color: #533668; color: #28A36E;");
         nextBtn.setAttribute("style", "background-color: #533668; color: #28A36E;");
     } else if (hero === "Black Widow") {
-        document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #7A1F1E 3%, #F7CBB2 50%, #645957 100%)')
+        document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #7A1F1E 3%, #5f0e0e 50%, #363131 100%)')
         document.querySelector("h1").setAttribute('style', 'color: black')
         document.body.setAttribute("style", "background-color: #645957;");
         document.querySelector("#colorPallet").setAttribute("style", "background-color: #F7CBB2; color: black")
@@ -225,7 +225,16 @@ function heroColorPallet(hero) {
         weeklyViewContainer.setAttribute("style", "background-color: #F7CBB2")
         prevBtn.setAttribute("style", "background-color: #645957; color: #F7CBB2;");
         nextBtn.setAttribute("style", "background-color: #645957; color: #F7CBB2;");
-    }
+    } else if (hero === "Thor") {
+        document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #b80000 3%, #F7CBB2 50%, #645957 100%)')
+        document.querySelector("h1").setAttribute('style', 'color: black')
+        document.body.setAttribute("style", "background-color: #363131;");
+        document.querySelector("#colorPallet").setAttribute("style", "background-color: #b80000; color: black")
+        document.querySelector("#daily-routine-container").setAttribute("style", "background-color: #b80000")
+        weeklyViewContainer.setAttribute("style", "background-color: #b80000")
+        prevBtn.setAttribute("style", "background-color: #dadada; color: #b80000;");
+        nextBtn.setAttribute("style", "background-color: #dadada; color: #b80000;");
+}
 }
 
 // Function used to create weekly workout container.
