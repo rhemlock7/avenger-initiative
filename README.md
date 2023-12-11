@@ -12,8 +12,10 @@ Transform into your favorite Marvel superhero with our unique fitness experience
 - HTML5, CSS3, JavaScript
 - CSS Libraries: Bootstrap, TailwindCSS
 - JavaScript framework: Jquery
-- API's: MarvelAPI and ExerciseNinja??
+- API's: Marvel's API and API Ninja
 - Github for communication and version control
 
 
 ## Screenshot of Deployed Website
+![Deployed Site Version 1](<./assets/images/Screenshot 2023-12-10 at 12.35.55 PM.png>)
+![Deployed Site Version 2](<assets/images/Screenshot 2023-12-10 at 12.36.14 PM.png>)
