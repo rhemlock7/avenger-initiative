@@ -123,6 +123,7 @@ function getWorkoutData(event) {
         .then(data => {
             workoutData = data;
             showsWorkouts();
+            console.log(workoutData);
         })
 
 }
