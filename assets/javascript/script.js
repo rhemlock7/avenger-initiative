@@ -187,7 +187,6 @@ function showsWorkouts() {
     muscleEl.setAttribute("style", "font-size: 1.75em;")
     equipmentEl.setAttribute("style", "font-size: 1.75em;")
 
-
     workoutNameEl.textContent = "Workout - " + workoutName;
     categoryEl.textContent = "Type - " + category;
     muscleEl.textContent = "Muscle - " + muscle;
