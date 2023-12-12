@@ -199,7 +199,7 @@ function showsWorkouts() {
     workoutDetailsDiv.append(equipmentEl)
 
     // Append additional workout tips
-    const regexTip = /\bTip:/;
+    const regexTip = /\bTip[s]?:?/;
     let instructionsPara = instr.toString();
     const matchTip = instructionsPara.split(regexTip);
 
@@ -214,7 +214,7 @@ function showsWorkouts() {
 
 
     // Append Variation paragraph if there is one
-    const regexVariation = /\bVariations:/;
+    const regexVariation = /\bVariation[s]?:?/;
     const matchVariation = regexVariation.test(instructionsPara);
 
     if (matchVariation) {
