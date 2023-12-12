@@ -179,9 +179,7 @@ function showsWorkouts() {
     var categoryEl = document.createElement('li')
     var muscleEl = document.createElement('li')
     var equipmentEl = document.createElement('li')
-    var instrEl = document.createElement('li')
 
-    instrEl.setAttribute("style", "font-size: 20px; font-family:roboto")
     workoutNameEl.setAttribute("style", "font-size:1.75em;")
     categoryEl.setAttribute("style", "font-size: 1.75em;")
     muscleEl.setAttribute("style", "font-size: 1.75em;")
@@ -191,7 +189,6 @@ function showsWorkouts() {
     categoryEl.textContent = "Type - " + category;
     muscleEl.textContent = "Muscle - " + muscle;
     equipmentEl.textContent = "Equipment - " + equipment;
-    instrEl.textContent = instr;
 
 
     //MUSTAPHA:appends the created elements to the html
@@ -199,7 +196,35 @@ function showsWorkouts() {
     workoutDetailsDiv.append(categoryEl)
     workoutDetailsDiv.append(muscleEl)
     workoutDetailsDiv.append(equipmentEl)
-    workoutDetailsDiv.append(instrEl)
+
+    // Append additional workout tips
+    const regexTip = /\bTip:/;
+    let instructionsPara = instr.toString();
+    const matchTip = instructionsPara.split(regexTip);
+
+    console.log(instructionsPara)
+
+    for (i = 0; i < matchTip.length; i++) {
+        let instrEl = document.createElement('li');
+        instrEl.setAttribute("style", "font-size: 20px; font-family:roboto; margin-bottom:20px;")
+
+        instrEl.textContent = matchTip[i];
+
+        workoutDetailsDiv.append(instrEl)
+    }
+
+
+    // Append Variation paragraph if there is one
+    const regexVariation = /\bVariations:/;
+    const matchVariation = regexVariation.test(instructionsPara);
+
+    if (matchVariation) {
+        const splitVariation = instructionsPara.split(regexVariation);
+        let variationEl = document.createElement('li');
+        variationEl.setAttribute("style", "font-size: 20px; font-family:roboto;")
+        variationEl.textContent = splitVariation[splitVariation.length - 1]
+        workoutDetailsDiv.append(variationEl)
+    }
 
 }
 
@@ -344,16 +369,14 @@ function createWeeklyView(heroDifficulty) {
         // Create HTML Elements
         var dayOfWeekContainer = document.createElement('div');
         var dayOfWeekTitle = document.createElement('h4');
-        var workoutTitle = document.createElement('h5');
         var dayOfWeekDetails = document.createElement('p');
         var workoutOption = document.createElement('option');
 
         // Set styling for daysOfWeek cards
         dayOfWeekContainer.setAttribute("style", "background-color:black; color:white; height:150px; padding:10px; margin-top:15px; text-align:left;")
         dayOfWeekContainer.classList.add("w-full", "md:w-1/10", "md:m-1")
-        dayOfWeekTitle.setAttribute("style", "font-size: 1.5em;")
-        workoutTitle.setAttribute("style", "margin-top:10px;")
-        dayOfWeekDetails.setAttribute("style", "margin-top:10px;")
+        dayOfWeekTitle.setAttribute("style", "font-size:2em;")
+        dayOfWeekDetails.setAttribute("style", "margin-top:10px; font-size:20px;")
 
         // Option dropdown attributes
         workoutOption.textContent = "Select Workout"
@@ -367,12 +390,10 @@ function createWeeklyView(heroDifficulty) {
 
         // Set textContent for each element
         dayOfWeekTitle.textContent = daysOfWeek[i].day;
-        workoutTitle.textContent = "Goal:"
         dayOfWeekDetails.textContent = difficulty;
 
         // Append Text to DayOfWeek div
         dayOfWeekContainer.append(dayOfWeekTitle);
-        dayOfWeekContainer.append(workoutTitle);
         dayOfWeekContainer.append(dayOfWeekDetails);
 
         // Append daysOfWeek containers to weeklyView container
@@ -383,8 +404,6 @@ function createWeeklyView(heroDifficulty) {
     // display workouts
     getWorkoutData();
 }
-
-// Calls function immediately to get hero from local storage
 
 //#Animate Lightning
 function lightningAnimate() {
