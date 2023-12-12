@@ -185,7 +185,6 @@ function showsWorkouts() {
     muscleEl.setAttribute("style", "font-size: 1.75em;")
     equipmentEl.setAttribute("style", "font-size: 1.75em;")
 
-
     workoutNameEl.textContent = "Workout - " + workoutName;
     categoryEl.textContent = "Type - " + category;
     muscleEl.textContent = "Muscle - " + muscle;
@@ -202,8 +201,6 @@ function showsWorkouts() {
     const regexTip = /\bTip:/;
     let instructionsPara = instr.toString();
     const matchTip = instructionsPara.split(regexTip);
-
-    console.log(instructionsPara)
 
     for (i = 0; i < matchTip.length; i++) {
         let instrEl = document.createElement('li');
