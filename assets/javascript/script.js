@@ -123,6 +123,7 @@ function getWorkoutData(event) {
         .then(data => {
             workoutData = data;
             showsWorkouts();
+            console.log(workoutData);
         })
 
 }
@@ -244,6 +245,10 @@ function heroColorPallet(hero) {
         weeklyViewContainer.setAttribute("style", "background-color: #aa1428; border-color: white")
         prevBtn.setAttribute("style", "background-color: white; color: #aa1428;");
         nextBtn.setAttribute("style", "background-color: white; color: #aa1428;");
+        document.querySelector("#hero-select-dropdown").setAttribute("style", "background-color:#aa1428")
+        document.querySelector("#workout-dropdown").setAttribute("style", "background-color:#aa1428")
+
+
     } else if (hero === "Hulk") {
         document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #28A36E 3%, white 50%, #533668 100%);')
         document.querySelector("h1").setAttribute('style', 'color: black')
@@ -253,6 +258,9 @@ function heroColorPallet(hero) {
         weeklyViewContainer.setAttribute("style", "background-color: #28A36E")
         prevBtn.setAttribute("style", "background-color: #533668; color: #28A36E;");
         nextBtn.setAttribute("style", "background-color: #533668; color: #28A36E;");
+        document.querySelector("#hero-select-dropdown").setAttribute("style", "background-color:#533668")
+        document.querySelector("#workout-dropdown").setAttribute("style", "background-color:#533668")
+
     } else if (hero === "Black Widow") {
         document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #7A1F1E 3%, #5f0e0e 50%, #363131 100%)')
         document.querySelector("h1").setAttribute('style', 'color: black')
@@ -262,6 +270,10 @@ function heroColorPallet(hero) {
         weeklyViewContainer.setAttribute("style", "background-color: #F7CBB2")
         prevBtn.setAttribute("style", "background-color: #645957; color: #F7CBB2;");
         nextBtn.setAttribute("style", "background-color: #645957; color: #F7CBB2;");
+        document.querySelector("#hero-select-dropdown").setAttribute("style", "background-color:#F7CBB2")
+        document.querySelector("#workout-dropdown").setAttribute("style", "background-color:#F7CBB2")
+
+
     } else if (hero === "Thor") {
         document.querySelector("#header").setAttribute('style', 'background-image: linear-gradient(225deg, #b80000 3%, #F7CBB2 50%, #645957 100%)')
         document.querySelector("h1").setAttribute('style', 'color: black')
@@ -271,6 +283,10 @@ function heroColorPallet(hero) {
         weeklyViewContainer.setAttribute("style", "background-color: #b80000")
         prevBtn.setAttribute("style", "background-color: #dadada; color: #b80000;");
         nextBtn.setAttribute("style", "background-color: #dadada; color: #b80000;");
+        document.querySelector("#hero-select-dropdown").setAttribute("style", "background-color:#b80000")
+        document.querySelector("#workout-dropdown").setAttribute("style", "background-color:#b80000")
+
+
     } else {
         document.querySelector("#header").setAttribute('style', 'background-color:red')
         document.querySelector("h1").setAttribute('style', 'color: black')
@@ -280,6 +296,10 @@ function heroColorPallet(hero) {
         weeklyViewContainer.setAttribute("style", "background-color: white")
         prevBtn.setAttribute("style", "background-color: black; color: white;");
         nextBtn.setAttribute("style", "background-color: black; color: white;");
+        document.querySelector("#hero-select-dropdown").setAttribute("style", "background-color:#ec2127")
+        document.querySelector("#workout-dropdown").setAttribute("style", "background-color:#ec2127")
+
+
     }
 }
 
