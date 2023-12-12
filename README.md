@@ -17,5 +17,5 @@ Transform into your favorite Marvel superhero with our unique fitness experience
 
 
 ## Screenshot of Deployed Website
-![Deployed Site Version 1](<./assets/images/Screenshot 2023-12-10 at 12.35.55 PM.png>)
-![Deployed Site Version 2](<assets/images/Screenshot 2023-12-10 at 12.36.14 PM.png>)
+![Deployed Site Version 1](<./assets/images/Screen Shot 2023-12-12 at 10.15.05 AM.png>)
+![Deployed Site Version 2](<./assets/images/Screen Shot 2023-12-12 at 10.15.22 AM.png>)

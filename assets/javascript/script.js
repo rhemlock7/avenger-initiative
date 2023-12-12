@@ -202,8 +202,6 @@ function showsWorkouts() {
     let instructionsPara = instr.toString();
     const matchTip = instructionsPara.split(regexTip);
 
-    console.log(instructionsPara)
-
     for (i = 0; i < matchTip.length; i++) {
         let instrEl = document.createElement('li');
         instrEl.setAttribute("style", "font-size: 20px; font-family:roboto; margin-bottom:20px;")
